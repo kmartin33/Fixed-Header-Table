@@ -73,7 +73,7 @@
             $fixedBody,
             widthMinusScrollbar;
 
-        settings.originalTable = $(this).clone();
+        settings.originalTable = $(this).clone(true,true);
         settings.includePadding = helpers._isPaddingIncludedWithWidth();
         settings.scrollbarOffset = helpers._getScrollbarWidth();
         settings.themeClassName = settings.themeClass;
@@ -135,7 +135,7 @@
             .addClass(settings.originalTable.attr('class'))
             .attr('style', settings.originalTable.attr('style'));
 
-          $thead.clone().appendTo($divHead.find('table'));
+          $thead.clone(true,true).appendTo($divHead.find('table'));
         } else {
           $divHead = $wrapper.find('div.fht-thead');
         }
@@ -436,7 +436,7 @@
         // clone header
         $thead.appendTo($fixedColumn)
           .find('tr')
-          .append($firstThChildren.clone());
+          .append($firstThChildren.clone(true,true));
 
         $tbody.appendTo($fixedColumn)
           .css({
@@ -453,7 +453,7 @@
             }
           }
 
-          $(this).clone()
+          $(this).clone(true,true)
             .appendTo($newRow);
         });
 
@@ -496,7 +496,7 @@
           helpers._fixHeightWithCss($firstTdFootChild, tableProps);
           $tfoot.appendTo($fixedColumn)
             .find('tr')
-            .append($firstTdFootChild.clone());
+            .append($firstTdFootChild.clone(true,true));
           // Set (view width) of $tfoot div to width of table (this accounts for footers with a colspan)
           footwidth = $tfoot.find('table').innerWidth();
           $tfoot.css({
@@ -531,7 +531,7 @@
 
             $divFoot.empty();
             $divHead.find('table')
-              .clone()
+              .clone(true,true)
               .appendTo($divFoot);
 
             break;
